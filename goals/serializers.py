@@ -56,6 +56,7 @@ class GoalCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Вы должны быть владельцем или редактором доски для этого")
         return value
 
+    # Дубликат кода, сразу глаз за это цепляется, copy-paste дважды щёлкнул, наводит на мысли, что вероятно весь проект - копипаст
     category = serializers.PrimaryKeyRelatedField(queryset=GoalCategory.objects.all())
     user = serializers.HiddenField(default=serializers.CurrentUserDefault())
 

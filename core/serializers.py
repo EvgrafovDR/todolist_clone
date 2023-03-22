@@ -26,6 +26,8 @@ class CreateUserSerializer(serializers.ModelSerializer):
     def validate(self, attrs: dict):
         password: str = attrs.get("password")
         password_repeat: str = attrs.pop("password_repeat", None)
+        # Мне кажется немного странным передавать на бэк повторение пароля
+        # Думаю что это должно на фронте проверяться, но наверное просто дело вкуса
         if password != password_repeat:
             raise ValidationError("Пароли не совпадают")
         return attrs
